@@ -6,10 +6,20 @@
 int main()
 {
     printf("Hello world!\n");
-    while(!(GetAsyncKeyState(65)& 0x8000 != 0)){
+    int running = 1;
+    while(running){
+        Sleep(10);
+        for(int ch= 8;ch<=222;ch++){
 
+            if((GetAsyncKeyState(ch)& 0x8000!=0)){
+                printf("You pressed %c \n",ch);
+                if(ch == 27){
+                    running = 0;
+                }
+            }
+        }
     }
-    printf("You pressed A");
+
     getchar();
     return 0;
 }
